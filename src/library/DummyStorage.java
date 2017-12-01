@@ -24,7 +24,7 @@ public class DummyStorage implements Storage {
         
     }
 
-    private static Map<String, String> mkBook(String isbn, String title, String author,
+    public static Map<String, String> mkBook(String isbn, String title, String author,
             String genre, String year) {
         final Map<String, String> book = new HashMap<>();
         book.put("isbn", isbn);
