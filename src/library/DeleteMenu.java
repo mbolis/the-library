@@ -14,7 +14,7 @@ public class DeleteMenu {
         //storage.delete(input);
         
         boolean result = storage.delete(input);
-        if (result);
+        if (result)
         System.out.println("Book deleted");
         else 
             System.out.println("Book not found");
