@@ -1,7 +1,9 @@
 package library;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DummyStorage implements Storage {
@@ -49,14 +51,17 @@ public class DummyStorage implements Storage {
         if (isbn == null || isbn.trim().isEmpty()) {
             return false;
         }
+        if (!storage.containsKey(isbn)) {
+            return false;
+        }
         storage.remove(isbn);
         return true;
     }
 
     @Override
-    public Map<String, String>[] read() {
+    public List<Map<String, String>> read() {
         final Collection<Map<String, String>> books = storage.values();
-        return books.toArray(new Map[books.size()]);
+        return new ArrayList<>(books);
     }
 
 }
