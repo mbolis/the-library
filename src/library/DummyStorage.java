@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static library.Storage.mkBook;
+
 public class DummyStorage implements Storage {
 
     private final Map<String, Map<String, String>> storage = new HashMap<>();
@@ -22,18 +24,6 @@ public class DummyStorage implements Storage {
         storage.put("0-553-05250-0", mkBook("0-553-05250-0", "Mona Lisa Overdrive", "William Gibson", "Sci-fi", "1988"));
         storage.put("0-553-26585-7", mkBook("0-553-26585-7", "Mindplayers", "Pat Cadigan", "Sci-fi", "1987"));
         
-    }
-
-    private static Map<String, String> mkBook(String isbn, String title, String author,
-            String genre, String year) {
-        final Map<String, String> book = new HashMap<>();
-        book.put("isbn", isbn);
-        book.put("title", title);
-        book.put("author", author);
-        book.put("genre", genre);
-        book.put("year", year);
-
-        return book;
     }
 
     @Override
