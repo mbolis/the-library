@@ -1,8 +1,12 @@
 package library;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static library.Storage.mkBook;
 
 public class DummyStorage implements Storage {
 
@@ -22,18 +26,6 @@ public class DummyStorage implements Storage {
         
     }
 
-    public static Map<String, String> mkBook(String isbn, String title, String author,
-            String genre, String year) {
-        final Map<String, String> book = new HashMap<>();
-        book.put("isbn", isbn);
-        book.put("title", title);
-        book.put("author", author);
-        book.put("genre", genre);
-        book.put("year", year);
-
-        return book;
-    }
-
     @Override
     public boolean save(Map<String, String> book) {
         String isbn = book.get("isbn");
@@ -49,14 +41,17 @@ public class DummyStorage implements Storage {
         if (isbn == null || isbn.trim().isEmpty()) {
             return false;
         }
+        if (!storage.containsKey(isbn)) {
+            return false;
+        }
         storage.remove(isbn);
         return true;
     }
 
     @Override
-    public Map<String, String>[] read() {
+    public List<Map<String, String>> read() {
         final Collection<Map<String, String>> books = storage.values();
-        return books.toArray(new Map[books.size()]);
+        return new ArrayList<>(books);
     }
 
 }

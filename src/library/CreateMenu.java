@@ -27,7 +27,7 @@ public class CreateMenu {
         System.out.println("Insert the year");
         year = readln();
 
-        book = DummyStorage.mkBook(isbn, title, author, genre, year);
+        book = Storage.mkBook(isbn, title, author, genre, year);
         
         if (storage.save(book)){
             System.out.println("Book entered");
