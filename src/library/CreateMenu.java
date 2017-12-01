@@ -4,43 +4,28 @@ import java.util.Map;
 
 public class CreateMenu {
 
-    static String readln() {
-        return new java.util.Scanner(System.in).nextLine();
-    }
-    
-    public static void menu(final Storage storage) {   
+    public static void menu(final Storage storage) {
         String isbn, title, author, genre, year, risp;
         Map<String, String> book;
-        System.out.println("Would you like insert a new book? (yes/no)");
-        risp = readln();
+        risp = Utility.promptln("Would you like insert a new book? (yes/no)");
 
-        while (risp.equals("yes")){    
+        while (risp.equals("yes")) {
 
-        System.out.println("Insert isbn code");
-        isbn = readln();
-        System.out.println("Insert the title");
-        title = readln();
-        System.out.println("Insert the author");
-        author = readln();
-        System.out.println("Insert the genre");
-        genre = readln();
-        System.out.println("Insert the year");
-        year = readln();
+            isbn = Utility.promptln("Insert isbn code");
+            title = Utility.promptln("Insert the title");
+            author = Utility.promptln("Insert the author");
+            genre = Utility.promptln("Insert the genre");
+            year = Utility.promptln("Insert the year");
 
-        book = Storage.mkBook(isbn, title, author, genre, year);
-        
-        if (storage.save(book)){
-            System.out.println("Book entered");
-        }
-        
-        System.out.println("Would you like insert a another book? (yes/no)");
-        risp = readln();
+            book = Storage.mkBook(isbn, title, author, genre, year);
+
+            if (storage.save(book)) {
+                System.out.println("Book entered");
+            }
+
+            System.out.println("Would you like insert a another book? (yes/no)");
+            risp = Utility.readln();
         }
 
-
-        // write book information prompt
-        // read user input
-        // magic
-        // save new book inside storage
     }
 }

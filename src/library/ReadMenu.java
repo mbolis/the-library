@@ -7,5 +7,6 @@ public class ReadMenu {
         // read user input
         // call functions
         // loop
+        storage.read().forEach(System.out::println);
     }
 }
